@@ -68,14 +68,12 @@
             line-height: 1;
         }
 
-        /* Обводка (VPN) */
         .stroke-sm {
             text-shadow: 
                 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
                 2px 2px 0 #000, 3px 3px 0 #000;
         }
 
-        /* Обводка (Подзаголовок) - ОЧЕНЬ ЖИРНАЯ */
         .stroke-med {
             text-shadow: 
                 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000,
@@ -83,7 +81,6 @@
                 4px 4px 0 #000, 5px 5px 0 #000; 
         }
 
-        /* Обводка (Заголовки) - МАКСИМАЛЬНО ЖИРНАЯ */
         .stroke-lg {
             text-shadow: 
                 4px 0 0 #000, -4px 0 0 #000, 0 4px 0 #000, 0 -4px 0 #000,
@@ -119,7 +116,6 @@
             font-size: 30px;
             margin-bottom: 30px;
             letter-spacing: 1px;
-            /* Жирнющая тень */
             text-shadow: 
                 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000,
                 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000,
@@ -130,7 +126,7 @@
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
         }
 
         .btn-img {
@@ -142,30 +138,19 @@
             transform: scale(1.05);
         }
 
-        /* --- БЛОК VPN --- */
+        /* --- БЛОК СООБЩЕНИЯ О ДЕПОЗИТЕ --- */
         .vpn-block {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: 10px;
         }
 
-        .vpn-btn-link {
-            display: block;
-            cursor: pointer;
-            transition: transform 0.1s;
-            margin-bottom: 8px;
-        }
-        .vpn-btn-link:hover {
-            transform: scale(1.05);
-        }
-        
-        .vpn-img {
-            height: 40px;
-            display: block;
-        }
-
-        .vpn-text {
-            font-size: 14px;
+        .deposit-msg {
+            font-size: 20px;
+            color: #ffff55; 
+            margin-top: 5px;
+            letter-spacing: 0.5px;
         }
 
         /* --- СЕКЦИЯ ВИДЕО --- */
@@ -231,13 +216,11 @@
             margin-bottom: 50px;
         }
 
-        /* --- ТЕКСТ БЛОКА ОБ ИГРЕ --- */
         .about-content {
             text-align: left;
             display: block;
         }
 
-        /* Заголовок MINEDROP - ТОЖЕ ЖИРНЮЩИЙ */
         .about-heading {
             font-family: 'Minecraft', sans-serif;
             font-size: 52px; 
@@ -250,21 +233,17 @@
                 8px 8px 0 #000;
         }
 
-        /* Описание - ОБЫЧНАЯ ТОЛЩИНА (NORMAL) */
         .about-desc {
             font-family: 'Benzin', sans-serif; 
             font-size: 20px; 
             line-height: 1.4;
             color: white;
-            /* УБРАНА ЖИРНОСТЬ ВОВСЕ */
             font-weight: normal; 
             text-transform: uppercase;
-            /* Оставил микро-тень 1px просто чтобы читалось на фоне, но не жирную */
             text-shadow: 1px 1px 0 #000;
             display: inline; 
         }
 
-        /* --- CTA БЛОК (КНОПКА ИГРАТЬ) --- */
         .cta-wrapper {
              width: 100%;
              display: flex;
@@ -332,6 +311,93 @@
             letter-spacing: 0.5px;
         }
 
+        /* --- ВСПЛЫВАЮЩЕЕ УВЕДОМЛЕНИЕ (ЦЕНТР + КРЕСТИК) --- */
+        .popup-notification {
+            position: fixed;
+            /* Центрирование */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8); /* Изначально чуть уменьшен */
+            
+            background-color: rgba(89, 83, 78, 0.98); /* Почти непрозрачный фон */
+            border: 4px solid #000;
+            padding: 40px 30px; /* Отступы побольше */
+            z-index: 10000; /* Поверх всего */
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 0 0 1000px rgba(0,0,0,0.7); /* Затемнение фона вокруг */
+            
+            /* Скрытое состояние */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), visibility 0.4s;
+        }
+
+        /* Класс для показа */
+        .popup-notification.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1); /* Плавное увеличение */
+            visibility: visible;
+        }
+
+        /* КРЕСТИК ЗАКРЫТИЯ */
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-family: 'Minecraft', sans-serif;
+            font-size: 24px;
+            color: #aaa;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+        .popup-close:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .popup-icon {
+            width: 80px; /* Картинка побольше для центра */
+            height: auto;
+            filter: drop-shadow(4px 4px 0 #000);
+        }
+
+        .popup-text {
+            font-size: 22px; /* Текст крупнее */
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        .popup-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #3f9b2d;
+            color: white;
+            padding: 12px 30px;
+            border: 2px solid #000;
+            text-align: center;
+            font-size: 18px;
+            box-shadow: inset -2px -4px 0 rgba(0,0,0,0.2), 2px 2px 0 #000;
+            transition: transform 0.1s;
+            margin-top: 10px;
+        }
+        .popup-btn:hover {
+            transform: scale(1.05);
+            background-color: #4CAF50;
+        }
+        .popup-btn:active {
+            transform: scale(0.95);
+            box-shadow: inset 2px 2px 0 rgba(0,0,0,0.4);
+        }
+
         /* ========================================= */
         /* --- АДАПТАЦИЯ ПОД ТЕЛЕФОН (MEDIA) --- */
         /* ========================================= */
@@ -355,6 +421,11 @@
                 padding: 0 10px;
                 line-height: 1.3;
                 text-shadow: 2px 2px 0 #000;
+            }
+
+            .deposit-msg {
+                font-size: 16px;
+                text-align: center;
             }
 
             .video-composition {
@@ -399,6 +470,17 @@
             .cta-btn-img {
                 height: 60px;
             }
+
+            /* Адаптация попапа */
+            .popup-notification {
+                padding: 30px 20px;
+            }
+            .popup-text {
+                font-size: 18px;
+            }
+            .popup-icon {
+                width: 60px;
+            }
         }
     </style>
 </head>
@@ -418,10 +500,9 @@
             </div>
             
             <div class="vpn-block">
-                <a href="https://t.me/hitvpnbot?start=1468854637420476" class="vpn-btn-link">
-                    <img src="./images/Group 87.png" alt="VPN" class="vpn-img">
-                </a>
-                <div class="vpn-text mc-font stroke-sm">необходим для игры</div>
+                <div class="deposit-msg mc-font stroke-sm">
+                    Игра появится после депозита
+                </div>
             </div>
         </header>
 
@@ -473,7 +554,39 @@
         </div>
     </footer>
 
+    <div id="depositPopup" class="popup-notification">
+        <div class="popup-close" id="popupCloseBtn">x</div>
+        
+        <img src="./images/pickaxe.png" alt="Кирка" class="popup-icon">
+        
+        <div class="popup-text mc-font stroke-sm">
+            Игра появится на сайте после депозита
+        </div>
+        
+        <a href="#" class="popup-btn mc-font">Играть</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.getElementById('depositPopup');
+            const closeBtn = document.getElementById('popupCloseBtn');
+
+            // Показываем через 5 секунд
+            setTimeout(function() {
+                if(popup) {
+                    popup.classList.add('show');
+                }
+            }, 5000);
+
+            // Скрываем при клике на крестик
+            if(closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    popup.classList.remove('show');
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>
-
