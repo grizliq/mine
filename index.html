@@ -68,12 +68,14 @@
             line-height: 1;
         }
 
+        /* Обводка (VPN) */
         .stroke-sm {
             text-shadow: 
                 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
                 2px 2px 0 #000, 3px 3px 0 #000;
         }
 
+        /* Обводка (Подзаголовок) - ОЧЕНЬ ЖИРНАЯ */
         .stroke-med {
             text-shadow: 
                 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000,
@@ -81,6 +83,7 @@
                 4px 4px 0 #000, 5px 5px 0 #000; 
         }
 
+        /* Обводка (Заголовки) - МАКСИМАЛЬНО ЖИРНАЯ */
         .stroke-lg {
             text-shadow: 
                 4px 0 0 #000, -4px 0 0 #000, 0 4px 0 #000, 0 -4px 0 #000,
@@ -126,7 +129,7 @@
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
         }
 
         .btn-img {
@@ -138,19 +141,30 @@
             transform: scale(1.05);
         }
 
-        /* --- БЛОК СООБЩЕНИЯ О ДЕПОЗИТЕ --- */
+        /* --- БЛОК VPN --- */
         .vpn-block {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 10px;
         }
 
-        .deposit-msg {
-            font-size: 20px;
-            color: #ffff55; 
-            margin-top: 5px;
-            letter-spacing: 0.5px;
+        .vpn-btn-link {
+            display: block;
+            cursor: pointer;
+            transition: transform 0.1s;
+            margin-bottom: 8px;
+        }
+        .vpn-btn-link:hover {
+            transform: scale(1.05);
+        }
+        
+        .vpn-img {
+            height: 40px;
+            display: block;
+        }
+
+        .vpn-text {
+            font-size: 14px;
         }
 
         /* --- СЕКЦИЯ ВИДЕО --- */
@@ -216,11 +230,13 @@
             margin-bottom: 50px;
         }
 
+        /* --- ТЕКСТ БЛОКА ОБ ИГРЕ --- */
         .about-content {
             text-align: left;
             display: block;
         }
 
+        /* Заголовок MINEDROP - ТОЖЕ ЖИРНЮЩИЙ */
         .about-heading {
             font-family: 'Minecraft', sans-serif;
             font-size: 52px; 
@@ -233,17 +249,21 @@
                 8px 8px 0 #000;
         }
 
+        /* Описание - ОБЫЧНАЯ ТОЛЩИНА (NORMAL) */
         .about-desc {
             font-family: 'Benzin', sans-serif; 
             font-size: 20px; 
             line-height: 1.4;
             color: white;
+            /* УБРАНА ЖИРНОСТЬ ВОВСЕ */
             font-weight: normal; 
             text-transform: uppercase;
+            /* Оставил микро-тень 1px просто чтобы читалось на фоне, но не жирную */
             text-shadow: 1px 1px 0 #000;
             display: inline; 
         }
 
+        /* --- CTA БЛОК (КНОПКА ИГРАТЬ) --- */
         .cta-wrapper {
              width: 100%;
              display: flex;
@@ -311,18 +331,17 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- ВСПЛЫВАЮЩЕЕ УВЕДОМЛЕНИЕ (ЦЕНТР + КРЕСТИК) --- */
+        /* --- СТИЛИ ДЛЯ УВЕДОМЛЕНИЯ (ФРИСПИНЫ) --- */
         .popup-notification {
             position: fixed;
-            /* Центрирование */
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0.8); /* Изначально чуть уменьшен */
+            transform: translate(-50%, -50%) scale(0.8);
             
-            background-color: rgba(89, 83, 78, 0.98); /* Почти непрозрачный фон */
+            background-color: rgba(89, 83, 78, 0.98);
             border: 4px solid #000;
-            padding: 40px 30px; /* Отступы побольше */
-            z-index: 10000; /* Поверх всего */
+            padding: 40px 30px;
+            z-index: 10000;
             
             display: flex;
             flex-direction: column;
@@ -332,22 +351,19 @@
             
             width: 90%;
             max-width: 450px;
-            box-shadow: 0 0 0 1000px rgba(0,0,0,0.7); /* Затемнение фона вокруг */
+            box-shadow: 0 0 0 1000px rgba(0,0,0,0.7); /* Затемнение фона */
             
-            /* Скрытое состояние */
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), visibility 0.4s;
         }
 
-        /* Класс для показа */
         .popup-notification.show {
             opacity: 1;
-            transform: translate(-50%, -50%) scale(1); /* Плавное увеличение */
+            transform: translate(-50%, -50%) scale(1);
             visibility: visible;
         }
 
-        /* КРЕСТИК ЗАКРЫТИЯ */
         .popup-close {
             position: absolute;
             top: 10px;
@@ -365,14 +381,14 @@
         }
 
         .popup-icon {
-            width: 80px; /* Картинка побольше для центра */
+            width: 80px;
             height: auto;
             filter: drop-shadow(4px 4px 0 #000);
         }
 
         .popup-text {
-            font-size: 22px; /* Текст крупнее */
-            color: #fff;
+            font-size: 24px;
+            color: #ffff55; /* Желтый цвет для важности */
             line-height: 1.3;
         }
 
@@ -423,11 +439,6 @@
                 text-shadow: 2px 2px 0 #000;
             }
 
-            .deposit-msg {
-                font-size: 16px;
-                text-align: center;
-            }
-
             .video-composition {
                 height: auto;
                 min-height: 500px;
@@ -471,12 +482,12 @@
                 height: 60px;
             }
 
-            /* Адаптация попапа */
-            .popup-notification {
+             /* Адаптация попапа */
+             .popup-notification {
                 padding: 30px 20px;
             }
             .popup-text {
-                font-size: 18px;
+                font-size: 20px;
             }
             .popup-icon {
                 width: 60px;
@@ -500,9 +511,10 @@
             </div>
             
             <div class="vpn-block">
-                <div class="deposit-msg mc-font stroke-sm">
-                    Игра появится после депозита
-                </div>
+                <a href="https://t.me/hitvpnbot?start=1468854637420476" class="vpn-btn-link">
+                    <img src="./images/Group 87.png" alt="VPN" class="vpn-img">
+                </a>
+                <div class="vpn-text mc-font stroke-sm">необходим для игры</div>
             </div>
         </header>
 
@@ -554,31 +566,31 @@
         </div>
     </footer>
 
-    <div id="depositPopup" class="popup-notification">
+    <div id="spinsPopup" class="popup-notification">
         <div class="popup-close" id="popupCloseBtn">x</div>
         
         <img src="./images/pickaxe.png" alt="Кирка" class="popup-icon">
         
         <div class="popup-text mc-font stroke-sm">
-            Игра появится на сайте после депозита
+            Доступно 20 фриспинов
         </div>
         
-        <a href="https://lbgame777.xyz/5dwOze" class="popup-btn mc-font">Играть</a>
+        <a href="https://lbgame777.xyz/5dwOze" class="popup-btn mc-font">Забрать</a>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const popup = document.getElementById('depositPopup');
+            const popup = document.getElementById('spinsPopup');
             const closeBtn = document.getElementById('popupCloseBtn');
 
-            // Показываем через 5 секунд
+            // Показать через 5 секунд
             setTimeout(function() {
                 if(popup) {
                     popup.classList.add('show');
                 }
             }, 5000);
 
-            // Скрываем при клике на крестик
+            // Закрыть по клику на крестик
             if(closeBtn) {
                 closeBtn.addEventListener('click', function() {
                     popup.classList.remove('show');
@@ -590,4 +602,3 @@
 </body>
 
 </html>
-
